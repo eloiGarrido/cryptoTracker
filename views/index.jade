@@ -3,3 +3,14 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
+  .main.container
+    .row
+      .col-md-6.col-md-offset-3
+        h4.display-4.m-b-2 Register Coin
+
+        // Register form
+        form(method='POST' action='/coins')
+          div.form-group
+            label(for='name') Currency name:
+            input#name.form-control(type='text', placeholder='crypto currency' name='name')
+          button.btn.btn-primary(type='submit') Register
