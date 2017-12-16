@@ -1,16 +1,41 @@
 extends layout
-
 block content
-  h1= title
-  p Welcome to #{title}
-  .main.container
-    .row
-      .col-md-6.col-md-offset-3
-        h4.display-4.m-b-2 Register Coin
-
-        // Register form
-        form(method='POST' action='/coins')
-          div.form-group
-            label(for='name') Currency name:
-            input#name.form-control(type='text', placeholder='crypto currency' name='name')
-          button.btn.btn-primary(type='submit') Register
+  #wrapper.toggled
+    // Sidebar
+    #sidebar-wrapper
+      ul.sidebar-nav
+        li.sidebar-brand
+          a(href="#")
+            | Start Bootstrap
+        li
+          a(href="#") Dashboard
+    // Page Content
+    #page-content-wrapper
+      .container-fluid
+        h1= title
+        p
+          | Welcome to #{title}
+        p
+          | Make sure to keep all page content within the
+          code #page-content-wrapper
+          | .
+        a#menu-toggle.btn.btn-secondary(href="#menu-toggle") Toggle Menu
+      .container-fluid(style='display:flex')
+        .col-md-6
+          h4 Register Coin
+          form(method='POST' action='/add_coin')
+            div.form-group
+              label(for='name') Currency name:
+              input#name.form-control(type='text', placeholder='crypto currency' name='name')
+            button.btn.btn-primary(type='submit') Add
+        .col-md-6
+          h4 hola
+  // Bootstrap core JavaScript
+  script(src="vendor/jquery/jquery.min.js")
+  script(src="vendor/bootstrap/js/bootstrap.bundle.min.js")
+  // Menu Toggle Script
+  script.
+    $("#menu-toggle").click(function (e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+    });
